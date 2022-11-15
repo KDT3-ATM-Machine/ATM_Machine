@@ -13,13 +13,13 @@ public class BankingUserService {
         return bankingUserService;
     }
 
-    public boolean signUp(String userId, String userPw){
+    public boolean signUpSuccess(String userId, String userPw){
         BankingUserDAO temp = new BankingUserDAO();
-        if(!temp.checkIfUserExists(userId,userPw)){
+        if(!temp.checkUserIdDuplicate(userId)){
             temp.insertUser(userId,userPw);
             return true;
         }else{
-            System.out.println("이미 존재하는 회원입니다.");
+            System.out.println("이미 존재하는 회원 아이디입니다.");
             return false;
         }
     }
