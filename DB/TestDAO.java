@@ -28,7 +28,7 @@ public class TestDAO {
         }
         return testDAO;
     }
-
+//asd
     public void selectAll() {
         try {
             conn = JDBCMgr.getConnection();
