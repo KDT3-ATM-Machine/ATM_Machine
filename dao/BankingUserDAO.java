@@ -19,6 +19,9 @@ public class BankingUserDAO {
     private static final String SELECT_USER_BYIDANDPW=
             "SELECT * FROM BANKINGUSER WHERE USERID = ? and USERPW = ?";
 
+    private static final String SELECT_USER_BYID=
+            "SELECT * FROM BANKINGUSER WHERE USERID = ?";
+
     private static final String INSERT_USER=
             "INSERT INTO BANKINGUSER (USERID, USERPW) VALUES (?,?)";
 
@@ -48,6 +51,27 @@ public class BankingUserDAO {
         }finally{
             JDBCMgr.close(stmt,conn);
             return result!=0;
+        }
+    }
+
+    public boolean checkUserIdDuplicate(String userId){
+        boolean exists = false;
+        try{
+            conn=JDBCMgr.getConnection();
+            stmt=conn.prepareStatement(SELECT_USER_BYID);
+            stmt.setString(1,userId);
+            rs=stmt.executeQuery();
+
+            while(rs.next()){
+                exists=true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            JDBCMgr.close(stmt,conn);
+            return exists;
         }
     }
 

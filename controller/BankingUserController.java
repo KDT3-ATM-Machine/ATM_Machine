@@ -5,9 +5,9 @@ import service.BankingUserService;
 
 public class BankingUserController {
 
-    private BankingUserController bankingUserController=null;
+    private static BankingUserController bankingUserController=null;
 
-    public BankingUserController getInstance(){
+    public static BankingUserController getInstance(){
         if (bankingUserController==null){
             bankingUserController=new BankingUserController();
         }
@@ -19,8 +19,8 @@ public class BankingUserController {
         return temp.checkIfUserExists(userId,userPw);
     }
 
-    public boolean checkSignIn(String userId, String userPw){
+    public boolean checkSignUp(String userId, String userPw){
         BankingUserService temp = BankingUserService.getInstance();
-        return temp.signUp(userId,userPw);
+        return temp.signUpSuccess(userId,userPw);
     }
 }
