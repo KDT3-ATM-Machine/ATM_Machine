@@ -7,7 +7,7 @@ CREATE table BankingUser(
 CREATE table BankAccount(
                             AccountName VARCHAR(30) NOT NULL ,
                             Balance INT,
-                            UserId INT NOT NULL,
+                            UserId VARCHAR(255) NOT NULL,
                             PRIMARY KEY (AccountName),
                             FOREIGN KEY (UserId) REFERENCES BANKINGUSER (UserId)
 );
