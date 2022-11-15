@@ -19,8 +19,9 @@ public class BankingUserDAO {
     private static final String SELECT_USER_BYIDANDPW=
             "SELECT * FROM BANKINGUSER WHERE USERID = ? and USERPW = ?";
 
-    private static final String INSERT_USER =
-            "INSERT INTO user_table (user_id, user_pw, VALUES (?,?)";
+    private static final String INSERT_USER=
+            "INSERT INTO BANKINGUSER (USERID, USERPW) VALUES (?,?)";
+
 
 
     public static BankingUserDAO getInstance() {
@@ -30,7 +31,27 @@ public class BankingUserDAO {
         return bankingUserDAO;
     }
 
-    public boolean selectUser(String userId, String userPw){
+    public boolean insertUser(String userId, String userPw){
+        int result=0;
+        try{
+            conn= JDBCMgr.getConnection();
+            stmt=conn.prepareStatement(INSERT_USER);
+            stmt.setString(1,userId);
+            stmt.setString(2,userPw);
+            result= stmt.executeUpdate();
+            System.out.println("아이디: " +userId + " 비밀번호: "+ userPw + " 회원가입 성공!");
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            JDBCMgr.close(stmt,conn);
+            return result!=0;
+        }
+    }
+
+    public boolean checkIfUserExists(String userId, String userPw){
         boolean correctIdAndPassword=false;
         try{
             conn= JDBCMgr.getConnection();
