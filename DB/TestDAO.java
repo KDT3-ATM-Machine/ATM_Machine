@@ -13,7 +13,7 @@ public class TestDAO {
     private ResultSet rs = null;
 
     private static final String SELECT_ALLUSERS =
-            "SELECT * FROMB BankingUser";
+            "SELECT * FROM BankingUser";
 
     private static final String INSERT_USER =
             "INSERT INTO user_table (user_id, user_pw, VALUES (?,?)";
@@ -34,8 +34,10 @@ public class TestDAO {
             conn = JDBCMgr.getConnection();
             stmt = conn.prepareStatement(SELECT_ALLUSERS);
             rs = stmt.executeQuery();
-            System.out.println(rs.getString("UserId"));
-            System.out.println(rs.getString("Userpw"));
+            while(rs.next()){
+                System.out.println(rs.getString("USERID"));
+                System.out.println(rs.getString("USERPW"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
