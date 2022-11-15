@@ -1,6 +1,6 @@
 CREATE table BankingUser(
-                            UserId INT NOT NULL,
-                            UserPw INT NOT NULL,
+                            UserId VARCHAR(255) NOT NULL,
+                            UserPw VARCHAR(255) NOT NULL,
                             PRIMARY KEY (UserId)
 );
 
@@ -11,3 +11,6 @@ CREATE table BankAccount(
                             PRIMARY KEY (AccountName),
                             FOREIGN KEY (UserId) REFERENCES BANKINGUSER (UserId)
 );
+
+INSERT INTO BANKINGUSER (UserId, UserPw)
+VALUES ('a1234','a123!@#');
