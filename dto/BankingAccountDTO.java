@@ -2,10 +2,10 @@ package dto;
 
 public class BankingAccountDTO {
 
-    String AccountNum;
-    String AccountName;
-    int balance;
-    String userId;
+    private String AccountNum;
+    private String AccountName;
+    private int balance;
+    private String userId;
 
     public BankingAccountDTO() {
     }
@@ -21,6 +21,8 @@ public class BankingAccountDTO {
         AccountName = accountName;
         this.userId = userId;
     }
+
+
 
     public String getAccountNum() {
         return AccountNum;

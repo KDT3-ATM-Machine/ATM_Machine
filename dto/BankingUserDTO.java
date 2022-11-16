@@ -6,6 +6,10 @@ public class BankingUserDTO {
 
     public BankingUserDTO(){}
 
+    public BankingUserDTO(String userId) {
+        this.userId = userId;
+    }
+
     public BankingUserDTO(String userId, String userPw){
         this.userId=userId;
         this.userPw=userPw;

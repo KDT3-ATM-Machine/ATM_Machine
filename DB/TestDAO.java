@@ -18,6 +18,12 @@ public class TestDAO {
     private static final String INSERT_USER =
             "INSERT INTO user_table (user_id, user_pw, VALUES (?,?)";
 
+    private static final String SELECT_ALLACCOUNTS =
+            "SELECT * FROM BankingAccount";
+
+    private static final String Insert_Account =
+            "INSERT INTO account_table(accountNum,accountName,balance, userid) VALUES(?,?,?,?)";
+
     public static void main(String[] args) {
         TestDAO temp =TestDAO.getInstance();
         temp.selectAll();
